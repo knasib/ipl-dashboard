@@ -2,6 +2,8 @@ server:
   port: 8081
 
 spring:
+  main:
+    allow-circular-references: true
   application:
     name: initial-data-feeder
   data:
@@ -11,10 +13,10 @@ spring:
       password: TltIXsotl+xyOkfajMKd1bLSp,pA,0i16laIuq4qHMuEJjDeFiadbf0x,OrGsOi08,CEqSDcnRZA7x8,qZ9fzxw-YBQ_Ehr211Mg5o1xiXTdmbxr7ArpbeFZLfnj5r9B
       schema-action: create-if-not-exists
       connection:
-        connect-timeout: 10s
-        init-query-timeout: 10s
+        connect-timeout: 20s
+        init-query-timeout: 20s
       request:
-        timeout: 10s
+        timeout: 20s
 
 datastax.astra:
   secure-connection-bundle: secure-connect.zip

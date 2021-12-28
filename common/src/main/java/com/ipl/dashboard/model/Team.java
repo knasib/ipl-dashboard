@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.*;
+
+import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -15,7 +16,6 @@ import org.springframework.data.cassandra.core.mapping.*;
 
 @Table(value = "team")
 public class Team {
-    @Id
     @PrimaryKeyColumn(name = "team_name", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
     private String name;
 
@@ -26,4 +26,17 @@ public class Team {
     @Column("total_matches")
     @CassandraType(type = CassandraType.Name.BIGINT)
     private long totalMatches;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return Objects.equals(getName(), team.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
+    }
 }
