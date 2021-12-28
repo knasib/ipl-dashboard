@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface MatchRepository extends CassandraRepository<Match, String> {
-    List<Match> findAllByTeam1(String team1);
+    List<Match> findAllByTeam1AndYear(String team1, int year);
 }

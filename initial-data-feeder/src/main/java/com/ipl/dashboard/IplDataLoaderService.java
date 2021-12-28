@@ -1,11 +1,14 @@
 package com.ipl.dashboard;
 
 import com.ipl.dashboard.config.AstraSecureBundleProperties;
+import com.ipl.dashboard.converter.ModelConverter;
 import com.ipl.dashboard.input.InputFileFieldName;
 import com.ipl.dashboard.model.Match;
 import com.ipl.dashboard.model.Team;
+import com.ipl.dashboard.repository.LosingMatchByTeamAndYearRepository;
 import com.ipl.dashboard.repository.MatchRepository;
 import com.ipl.dashboard.repository.TeamRepository;
+import com.ipl.dashboard.repository.WinningMatchByTeamAndYearRepository;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
@@ -18,6 +21,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.cassandra.CqlSessionBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.FileReader;
 import java.nio.file.Path;
@@ -36,20 +40,21 @@ public class IplDataLoaderService implements CommandLineRunner {
     MatchRepository matchRepository;
 
     @Autowired
+    WinningMatchByTeamAndYearRepository winningMatchByTeamAndYearRepository;
+
+    @Autowired
+    LosingMatchByTeamAndYearRepository losingMatchByTeamAndYearRepository;
+
+    @Autowired
     TeamRepository teamRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(IplDataLoaderService.class, args);
     }
 
-    @Bean
-    public CqlSessionBuilderCustomizer sessionBuilderCustomizer(AstraSecureBundleProperties astraProperties) {
-        Path bundle = astraProperties.getSecureConnectionBundle().toPath();
-        return builder -> builder.withCloudSecureConnectBundle(bundle);
-    }
-
     @Override
     public void run(String... args) throws Exception {
+        log.info("Parsing the {} to save Team and Match data", fileName);
         CSVParser csvParser = new CSVParserBuilder().withSeparator(',').build();
         try(CSVReader reader = new CSVReaderBuilder(
                 new FileReader(Objects.requireNonNull(this.getClass().getResource("/" + fileName)).getPath()))
@@ -110,7 +115,7 @@ public class IplDataLoaderService implements CommandLineRunner {
                 .winner(inputMatch[InputFileFieldName.winner.ordinal()])
                 .tossDecision(inputMatch[InputFileFieldName.toss_decision.ordinal()])
                 .tossWinner(inputMatch[InputFileFieldName.toss_winner.ordinal()])
-                .result(getResult(inputMatch)) //
+                .result(getResult(inputMatch))
                 .venue(inputMatch[InputFileFieldName.venue.ordinal()])
                 .umpire1(inputMatch[InputFileFieldName.umpire1.ordinal()])
                 .umpire2(inputMatch[InputFileFieldName.umpire2.ordinal()])
@@ -118,6 +123,8 @@ public class IplDataLoaderService implements CommandLineRunner {
 
         log.info("Saving Match for {} -> {}", inputMatch[InputFileFieldName.id.ordinal()], match);
         matchRepository.save(match);
+        winningMatchByTeamAndYearRepository.save(ModelConverter.convertToWinningMatch(match));
+        losingMatchByTeamAndYearRepository.save(ModelConverter.convertToLosingMatch(match));
     }
 
     private String getTeam1(String[] inputMatch) {

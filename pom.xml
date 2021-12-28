@@ -25,6 +25,8 @@
         <spring-boot.version>2.6.2</spring-boot.version>
         <lombok.version>1.18.22</lombok.version>
         <opencsv.version>5.5.2</opencsv.version>
+        <springdoc-openapi-ui.version>1.6.3</springdoc-openapi-ui.version>
+        <jackson-datatype-jsr310.version>2.13.1</jackson-datatype-jsr310.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -59,6 +61,12 @@
                 <version>${opencsv.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc-openapi-ui.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
@@ -72,18 +80,15 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
+                    <release>17</release>
                 </configuration>
             </plugin>
         </plugins>

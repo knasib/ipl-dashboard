@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.cql.Ordering;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.CassandraType;
@@ -19,23 +18,20 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 
-@Table(value = "match")
-public class Match {
-    @Id
-    @PrimaryKeyColumn(name = "id", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
-    private String id;
-
-    @Column("team_1")
-    @CassandraType(type = CassandraType.Name.TEXT)
+@Table(value = "winning_match_by_team_and_year")
+public class WinningMatchByTeamAndYear {
+    @PrimaryKeyColumn(name = "team_1", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
     private String team1;
+
+    @PrimaryKeyColumn(name = "year", ordinal = 1, type = PrimaryKeyType.CLUSTERED, ordering = Ordering.DESCENDING)
+    private int year;
+
+    @PrimaryKeyColumn(name = "id", ordinal = 2, type = PrimaryKeyType.CLUSTERED, ordering = Ordering.DESCENDING)
+    private String id;
 
     @Column("team_2")
     @CassandraType(type = CassandraType.Name.TEXT)
     private String team2;
-
-    @Column("year")
-    @CassandraType(type = CassandraType.Name.INT)
-    private int year;
 
     @Column("match_date")
     @CassandraType(type = CassandraType.Name.DATE)
