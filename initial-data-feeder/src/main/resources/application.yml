@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: initial-data-feeder
+  data:
+    cassandra:
+      keyspace-name: main
+      username: jXHmZgMrQWHoJtrCraSXQMio
+      password: TltIXsotl+xyOkfajMKd1bLSp,pA,0i16laIuq4qHMuEJjDeFiadbf0x,OrGsOi08,CEqSDcnRZA7x8,qZ9fzxw-YBQ_Ehr211Mg5o1xiXTdmbxr7ArpbeFZLfnj5r9B
+      schema-action: create-if-not-exists
+      connection:
+        connect-timeout: 10s
+        init-query-timeout: 10s
+      request:
+        timeout: 10s
+
+datastax.astra:
+  secure-connection-bundle: secure-connect.zip
+
+astra.db:
+  id: 4c9333f3-73fc-40f2-bf70-b37a5b1453a3-1
+  region: asia-south1
+  keyspace: main
+  application.token: AstraCS:jXHmZgMrQWHoJtrCraSXQMio:0c2bee781945e31d0f5f69952a50e59ce977c68ff099c22b507f082e102b8280
+
+input.file: IPLMatches2008-2020.csv
