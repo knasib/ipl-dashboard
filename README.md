@@ -9,4 +9,4 @@ This repository serves the different REST endpoints to provide different IPL rel
 3. Spring boot starter Hateoas to frame to Hateoas links
 4. Swagger for Documentation
 
-###### Web UI code will be in present different git repository. ######
+###### Web UI code will be present in different git repository. ######
