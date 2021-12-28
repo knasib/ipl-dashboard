@@ -1,7 +1,6 @@
 package com.ipl.dashboard.controller;
 
 import com.ipl.dashboard.model.Team;
-import com.ipl.dashboard.repository.TeamRepository;
 import com.ipl.dashboard.service.TeamService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

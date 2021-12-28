@@ -1,9 +1,7 @@
 package com.ipl.dashboard.controller;
 
 import com.ipl.dashboard.model.Match;
-import com.ipl.dashboard.model.Team;
 import com.ipl.dashboard.service.MatchService;
-import com.ipl.dashboard.service.TeamService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

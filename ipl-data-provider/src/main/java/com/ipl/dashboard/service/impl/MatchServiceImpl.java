@@ -32,9 +32,9 @@ public class MatchServiceImpl implements MatchService {
         List<Match> matches = new ArrayList<>();
 
         matches.addAll(winningMatchByTeamAndYearRepository.findAllByTeam1AndYear(team, year)
-                .stream().map(ele -> ModelConverter.convertToMatch(ele)).toList());
+                .stream().map(ModelConverter::convertToMatch).toList());
         matches.addAll(losingMatchByTeamAndYearRepository.findAllByTeam2AndYear(team, year)
-                .stream().map(ele -> ModelConverter.convertToMatch(ele)).toList());
+                .stream().map(ModelConverter::convertToMatch).toList());
 
         return matches;
     }

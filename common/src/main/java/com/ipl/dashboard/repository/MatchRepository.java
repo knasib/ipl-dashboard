@@ -4,9 +4,6 @@ import com.ipl.dashboard.model.Match;
 import org.springframework.data.cassandra.repository.CassandraRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface MatchRepository extends CassandraRepository<Match, String> {
-    List<Match> findAllByTeam1AndYear(String team1, int year);
 }
