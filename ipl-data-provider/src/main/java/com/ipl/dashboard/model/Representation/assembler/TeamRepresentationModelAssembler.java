@@ -7,6 +7,7 @@ import com.ipl.dashboard.model.Representation.TeamRepresentationModel;
 import com.ipl.dashboard.model.Team;
 import com.ipl.dashboard.model.converter.ModelRepresentationConverter;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -24,7 +25,8 @@ public class TeamRepresentationModelAssembler
     }
 
     @Override
-    public TeamRepresentationModel toModel(Team team) {
+    @NonNull
+    public TeamRepresentationModel toModel(@NonNull Team team) {
         TeamRepresentationModel teamRepresentationModel = ModelRepresentationConverter.convertToTeamRepresentationModel(team);
         teamRepresentationModel.add(
                 linkTo(methodOn(TeamController.class).getTeams()).withRel(Constants.TEAMS)

@@ -11,7 +11,6 @@ import com.ipl.dashboard.repository.MatchRepository;
 import com.ipl.dashboard.repository.WinningMatchByTeamAndYearRepository;
 import com.ipl.dashboard.service.MatchService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

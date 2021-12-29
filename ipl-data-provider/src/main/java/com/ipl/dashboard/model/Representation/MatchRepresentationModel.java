@@ -2,10 +2,12 @@ package com.ipl.dashboard.model.Representation;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.time.LocalDate;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Builder
 public class MatchRepresentationModel extends RepresentationModel<MatchRepresentationModel> {

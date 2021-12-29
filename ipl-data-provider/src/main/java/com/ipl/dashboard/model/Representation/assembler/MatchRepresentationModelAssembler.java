@@ -6,6 +6,7 @@ import com.ipl.dashboard.model.Match;
 import com.ipl.dashboard.model.Representation.MatchRepresentationModel;
 import com.ipl.dashboard.model.converter.ModelRepresentationConverter;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -23,7 +24,8 @@ public class MatchRepresentationModelAssembler
     }
 
     @Override
-    public MatchRepresentationModel toModel(Match match) {
+    @NonNull
+    public MatchRepresentationModel toModel(@NonNull Match match) {
         MatchRepresentationModel matchRepresentationModel = ModelRepresentationConverter.convertToMatchRepresentationModel(match);
         matchRepresentationModel.add(
                 linkTo(methodOn(MatchController.class).getMatchById(match.getId())).withSelfRel()

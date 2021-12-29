@@ -8,7 +8,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +16,12 @@ import javax.validation.constraints.NotEmpty;
 @RestController
 @RequestMapping(value = "/matches")
 public class MatchController {
-    @Autowired
-    MatchService matchService;
+
+    private final MatchService matchService;
+
+    public MatchController(MatchService matchService) {
+        this.matchService = matchService;
+    }
 
     @Operation(summary = "Get all Matches by a team for a specific year.")
     @ApiResponses(value = {
