@@ -1,5 +1,6 @@
 package com.ipl.dashboard.model.Representation.assembler;
 
+import com.ipl.dashboard.constant.Constants;
 import com.ipl.dashboard.controller.MatchController;
 import com.ipl.dashboard.controller.TeamController;
 import com.ipl.dashboard.model.Representation.TeamRepresentationModel;
@@ -26,10 +27,10 @@ public class TeamRepresentationModelAssembler
     public TeamRepresentationModel toModel(Team team) {
         TeamRepresentationModel teamRepresentationModel = ModelRepresentationConverter.convertToTeamRepresentationModel(team);
         teamRepresentationModel.add(
-                linkTo(methodOn(TeamController.class).getTeams()).withRel("teams")
+                linkTo(methodOn(TeamController.class).getTeams()).withRel(Constants.TEAMS)
         );
         teamRepresentationModel.add(
-                linkTo(MatchController.class).slash(team.getName()).slash("years").slash(2020).withRel("matches")
+                linkTo(MatchController.class).slash(team.getName()).slash(Constants.YEARS).slash(Constants.CURRENT_YEAR).withRel(Constants.MATCHES)
         );
         return teamRepresentationModel;
     }

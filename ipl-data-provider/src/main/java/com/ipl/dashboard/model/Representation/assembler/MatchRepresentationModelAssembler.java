@@ -1,5 +1,6 @@
 package com.ipl.dashboard.model.Representation.assembler;
 
+import com.ipl.dashboard.constant.Constants;
 import com.ipl.dashboard.controller.MatchController;
 import com.ipl.dashboard.model.Match;
 import com.ipl.dashboard.model.Representation.MatchRepresentationModel;
@@ -28,7 +29,7 @@ public class MatchRepresentationModelAssembler
                 linkTo(methodOn(MatchController.class).getMatchById(match.getId())).withSelfRel()
         );
         matchRepresentationModel.add(
-                linkTo(methodOn(MatchController.class).getMatches(match.getTeam1(), match.getYear())).withRel("matches")
+                linkTo(methodOn(MatchController.class).getMatches(match.getTeam1(), match.getYear())).withRel(Constants.MATCHES)
         );
         return matchRepresentationModel;
     }
