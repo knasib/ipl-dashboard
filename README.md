@@ -14,12 +14,12 @@ This repository serves the different REST endpoints to provide different IPL rel
 2. Run the below command
 
    ```
-   java -jar .\target\ipl-data-provider.jar --datastax.astra.secure-connection-bundle=<Path to Secure connect.zip>
+   java -jar .\ipl-data-provider.jar --datastax.astra.secure-connection-bundle=<Path to Secure connect.zip>
    ```
    
    #### Example ####
    ```
-   java -jar .\ipl-data-provider.jar --datastax.astra.secure-connection-bundle=C:\MyWork\ipl-dashboard\common\src\main\resources\secure-connect.zip
+   java -jar .\ipl-data-provider.jar --datastax.astra.secure-connection-bundle=C:\MyWork\resources\secure-connect.zip
 
    ```  
    
