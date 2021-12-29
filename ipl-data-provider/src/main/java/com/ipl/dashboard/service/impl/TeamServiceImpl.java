@@ -24,7 +24,7 @@ public class TeamServiceImpl implements TeamService {
     public TeamRepresentationModels getTeams() {
         List<Team> teams = teamRepository.findAll();
         return TeamRepresentationModels.builder()
-                .teamRepresentationModels(teamRepresentationModelAssembler.toCollectionModel(teams))
+                .teamRepresentationModels(teamRepresentationModelAssembler.toModels(teams))
                 .build();
     }
 }

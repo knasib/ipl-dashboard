@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,14 +28,15 @@ public class TeamController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful response.", content = {
                     @Content(mediaType = "application/team.api.v1+json",
-                            schema = @Schema(implementation = Team.class)
+                            schema = @Schema(implementation = TeamRepresentationModels.class)
                     )
             }),
             @ApiResponse(responseCode = "400", description = "Not found."),
             @ApiResponse(responseCode = "500", description = "Internal server error.")
     })
     @GetMapping(value = "")
-    public ResponseEntity<TeamRepresentationModels> getTeams() {
+    public @ResponseBody
+    ResponseEntity<TeamRepresentationModels> getTeams() {
         TeamRepresentationModels teams = teamService.getTeams();
         return ResponseEntity.ok(teams);
     }

@@ -8,6 +8,9 @@ import com.ipl.dashboard.model.converter.ModelRepresentationConverter;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -23,11 +26,15 @@ public class TeamRepresentationModelAssembler
     public TeamRepresentationModel toModel(Team team) {
         TeamRepresentationModel teamRepresentationModel = ModelRepresentationConverter.convertToTeamRepresentationModel(team);
         teamRepresentationModel.add(
-                linkTo(methodOn(TeamController.class).getTeams()).withSelfRel()
+                linkTo(methodOn(TeamController.class).getTeams()).withRel("teams")
         );
         teamRepresentationModel.add(
                 linkTo(MatchController.class).slash(team.getName()).slash("years").slash(2020).withRel("matches")
         );
         return teamRepresentationModel;
+    }
+
+    public List<TeamRepresentationModel> toModels(List<Team> teams) {
+        return teams.stream().map(this::toModel).collect(Collectors.toList());
     }
 }

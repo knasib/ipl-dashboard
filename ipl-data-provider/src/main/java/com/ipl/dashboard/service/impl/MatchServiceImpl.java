@@ -10,6 +10,7 @@ import com.ipl.dashboard.repository.LosingMatchByTeamAndYearRepository;
 import com.ipl.dashboard.repository.MatchRepository;
 import com.ipl.dashboard.repository.WinningMatchByTeamAndYearRepository;
 import com.ipl.dashboard.service.MatchService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class MatchServiceImpl implements MatchService {
 
@@ -35,6 +37,7 @@ public class MatchServiceImpl implements MatchService {
 
     @Override
     public MatchRepresentationModels getMatches(String team, int year) {
+        log.info("Get all matches for {} in year {}", team, year);
         List<Match> matches = new ArrayList<>();
 
         matches.addAll(winningMatchByTeamAndYearRepository.findAllByTeam1AndYear(team, year)
@@ -43,16 +46,18 @@ public class MatchServiceImpl implements MatchService {
                 .stream().map(ModelConverter::convertToMatch).toList());
 
         return MatchRepresentationModels.builder()
-                .matchRepresentationModels(matchRepresentationModelAssembler.toCollectionModel(matches))
+                .matchRepresentationModels(matchRepresentationModelAssembler.toModels(matches))
                 .build();
     }
 
     @Override
     public MatchRepresentationModel getMatch(String matchId) {
+        log.info("Get match with match id {}", matchId);
         Optional<Match> matchOptional = matchRepository.findById(matchId);
         if(matchOptional.isPresent())
             return matchRepresentationModelAssembler.toModel(matchOptional.get());
 
+        log.error("Match with Id {} not found.", matchId);
         throw new ResourceNotFoundException("Match with Id " + matchId + " not found.");
     }
 }

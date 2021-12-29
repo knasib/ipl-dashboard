@@ -32,4 +32,9 @@ public class MatchRepresentationModelAssembler
         );
         return matchRepresentationModel;
     }
+
+    public List<MatchRepresentationModel> toModels(List<Match> matches) {
+        return matches.stream().map(this::toModel).collect(Collectors.toList());
+
+    }
 }
