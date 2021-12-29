@@ -17,7 +17,7 @@ public class ModelConverter {
                 .winner(source.getWinner())
                 .tossDecision(source.getTossDecision())
                 .tossWinner(source.getTossWinner())
-                .result(source.getResult()) //
+                .result(source.getResult())
                 .venue(source.getVenue())
                 .umpire1(source.getUmpire1())
                 .umpire2(source.getUmpire2())
@@ -34,7 +34,7 @@ public class ModelConverter {
                 .winner(source.getWinner())
                 .tossDecision(source.getTossDecision())
                 .tossWinner(source.getTossWinner())
-                .result(source.getResult()) //
+                .result(source.getResult())
                 .venue(source.getVenue())
                 .umpire1(source.getUmpire1())
                 .umpire2(source.getUmpire2())
@@ -51,7 +51,7 @@ public class ModelConverter {
                 .winner(source.getWinner())
                 .tossDecision(source.getTossDecision())
                 .tossWinner(source.getTossWinner())
-                .result(source.getResult()) //
+                .result(source.getResult())
                 .venue(source.getVenue())
                 .umpire1(source.getUmpire1())
                 .umpire2(source.getUmpire2())
@@ -68,7 +68,7 @@ public class ModelConverter {
                 .winner(source.getWinner())
                 .tossDecision(source.getTossDecision())
                 .tossWinner(source.getTossWinner())
-                .result(source.getResult()) //
+                .result(source.getResult())
                 .venue(source.getVenue())
                 .umpire1(source.getUmpire1())
                 .umpire2(source.getUmpire2())

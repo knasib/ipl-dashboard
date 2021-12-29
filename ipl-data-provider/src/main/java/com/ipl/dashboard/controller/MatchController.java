@@ -1,6 +1,8 @@
 package com.ipl.dashboard.controller;
 
 import com.ipl.dashboard.model.Match;
+import com.ipl.dashboard.model.Representation.MatchRepresentationModel;
+import com.ipl.dashboard.model.Representation.MatchRepresentationModels;
 import com.ipl.dashboard.service.MatchService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "matches")
+@RequestMapping(value = "/matches")
 public class MatchController {
     @Autowired
     MatchService matchService;
@@ -34,8 +36,8 @@ public class MatchController {
             @ApiResponse(responseCode = "500", description = "Internal server error.")
     })
     @GetMapping(value = "{teamname}/years/{year}")
-    public List<Match> getMatches(@PathVariable @NotEmpty String teamname,
-                                  @PathVariable @NotEmpty Integer year) {
+    public MatchRepresentationModels getMatches(@PathVariable @NotEmpty String teamname,
+                                                @PathVariable @NotEmpty Integer year) {
         return matchService.getMatches(teamname, year);
     }
 
@@ -50,7 +52,7 @@ public class MatchController {
             @ApiResponse(responseCode = "500", description = "Internal server error.")
     })
     @GetMapping(value = "{id}")
-    public Optional<Match> getMatchById(@PathVariable @NotEmpty String id) {
+    public MatchRepresentationModel getMatchById(@PathVariable @NotEmpty String id) {
         return matchService.getMatch(id);
     }
 }

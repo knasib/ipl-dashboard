@@ -1,11 +1,13 @@
 package com.ipl.dashboard.service;
 
 import com.ipl.dashboard.model.Match;
+import com.ipl.dashboard.model.Representation.MatchRepresentationModel;
+import com.ipl.dashboard.model.Representation.MatchRepresentationModels;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface MatchService {
-    List<Match> getMatches(String team, int year);
-    Optional<Match> getMatch(String matchId);
+    MatchRepresentationModels getMatches(String team, int year);
+    MatchRepresentationModel getMatch(String matchId);
 }
