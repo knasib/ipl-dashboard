@@ -1,7 +1,6 @@
 package com.ipl.dashboard.controller;
 
 import com.ipl.dashboard.model.Representation.MatchRepresentationModel;
-import com.ipl.dashboard.model.Representation.MatchRepresentationModels;
 import com.ipl.dashboard.service.MatchService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotEmpty;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/matches")
 public class MatchController {
@@ -21,23 +21,6 @@ public class MatchController {
 
     public MatchController(MatchService matchService) {
         this.matchService = matchService;
-    }
-
-    @Operation(summary = "Get all Matches by a team for a specific year.")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successful response.", content = {
-                    @Content(mediaType = "application/match.api.v1+json",
-                            schema = @Schema(implementation = MatchRepresentationModels.class)
-                    )
-            }),
-            @ApiResponse(responseCode = "400", description = "Not found."),
-            @ApiResponse(responseCode = "500", description = "Internal server error.")
-    })
-    @GetMapping(value = "{teamname}/years/{year}")
-    public @ResponseBody
-    ResponseEntity<MatchRepresentationModels> getMatches(@PathVariable @NotEmpty String teamname,
-                                                         @PathVariable @NotEmpty Integer year) {
-        return ResponseEntity.ok(matchService.getMatches(teamname, year));
     }
 
     @Operation(summary = "Get Match by ID")
