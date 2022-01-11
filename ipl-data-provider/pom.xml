@@ -42,12 +42,19 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-
                 <configuration>
                     <mainClass>com.ipl.dashboard.DataProviderServiceApplication</mainClass>
+                    <imageName>${project.groupId}/ipl.dashboard:${project.version}</imageName>
                 </configuration>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build-image</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-
 </project>

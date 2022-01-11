@@ -1,0 +1,11 @@
+version: '3'
+services:
+  ipl-dashboard:
+    container_name: "$CONTAINER_NAME"
+    image: "$IMAGE_NAME"
+    volumes:
+      - $DATASTAX_ASTRA_SECURE_CONNECTION_BUNDLE:/home/secure-connect.zip
+    ports:
+      - "8082:8082"
+    environment:
+      DATASTAX_ASTRA_SECURE_CONNECTION_BUNDLE: /home/secure-connect.zip
