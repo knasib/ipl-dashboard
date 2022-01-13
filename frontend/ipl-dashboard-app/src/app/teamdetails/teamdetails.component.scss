@@ -1,0 +1,30 @@
+.grid-container {
+
+  display: grid;
+  grid-template-columns: auto 3fr;
+  grid-gap: 10px 20px;
+
+  .year-box {
+    align-items: stretch;
+  }
+  .item-box {
+    margin-top: 10px;
+  }
+
+  .year, .home {
+    margin: 10px 5px 5px 100px;
+    width: 50px;
+    display: inline-block;
+    padding: 5px;
+    color: aliceblue;
+    text-align: center;
+    background-color: darkgray;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  h3 {
+    color: aliceblue;
+  }
+
+}

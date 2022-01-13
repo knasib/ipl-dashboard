@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {Team} from "../../shared/models/Team";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-teamtile',
@@ -10,7 +11,8 @@ export class TeamtileComponent implements OnInit, AfterViewInit {
   @Input() team: Team;
 
 
-  constructor() { }
+  constructor(private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -19,4 +21,9 @@ export class TeamtileComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
   }
 
+  navigateTeamPage() {
+    console.log("Navigate To Team Page " + this.team.name)
+    let url = "/teams/" + this.team.name + "/years/2020";
+    this.router.navigate([url], { relativeTo: this.route })
+  }
 }

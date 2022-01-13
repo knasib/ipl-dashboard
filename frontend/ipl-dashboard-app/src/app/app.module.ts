@@ -14,6 +14,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {TeamsEffects} from "./home/store/teams.effects";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {TeamdetailsEffects} from "./teamdetails/store/teamdetails.effects";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {FormsModule} from "@angular/forms";
   imports: [
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([
-      TeamsEffects
+      TeamsEffects,
+      TeamdetailsEffects
     ]),
     HttpClientModule,
     FormsModule,
