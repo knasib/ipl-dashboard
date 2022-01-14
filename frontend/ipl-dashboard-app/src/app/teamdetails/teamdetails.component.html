@@ -6,24 +6,31 @@
     </div>
   </div>
   <div>
-
-    <h3>{{teamName}}</h3>
+    <div class="header">{{teamName.toUpperCase()}}</div>
     <div class="col-lg-9" *ngIf="matches.length == 0">
-      <h3>No Match to display</h3>
+      <h3 style="color: aliceblue">No Match to display</h3>
     </div>
     <div class="col-lg-9" *ngFor="let match of matches">
       <div class="row">
         <div class="list-group-item item-box"  [ngClass]="match.winner == teamName ? 'win' : 'loss'">
-          <div>vs <strong style="font-size: 20px">{{match.team2}}</strong></div>
+          <div class="team2">vs {{match.team1 == teamName ? match.team2.toUpperCase() : match.team1.toUpperCase()}}</div>
           <div>{{match.date}}</div>
           <div>{{match.venue}}</div>
-          Toss Details
-          <div>{{match.tossWinner}} wins the toss and elected to {{match.tossDecision}}</div>
-          Umpire Details
-          <div>{{match.umpire1}}</div>
-          <div>{{match.umpire2}}</div>
-          Result
-          <div>{{match.result}}</div>
+          <div class="match-details">
+            <div class="toss-details">
+              <div class="sub-header">Toss Details</div>
+              <div>{{match.tossWinner}} wins the toss and elected to {{match.tossDecision}}</div>
+            </div>
+            <div class="umpire-details">
+              <div class="sub-header">Umpire Details</div>
+              <div>{{match.umpire1}}</div>
+              <div>{{match.umpire2}}</div>
+            </div>
+            <div class="match-result">
+              <div class="sub-header">Match Result</div>
+              <div>{{match.result}}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
