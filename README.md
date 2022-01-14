@@ -8,6 +8,7 @@ This repository serves the different REST endpoints to provide different IPL rel
 2. Cassandra Database
 3. Spring boot starter Hateoas to frame to Hateoas links
 4. Swagger for Documentation
+5. Angular, Html, css for UI
 
 ### How to run ###
 1. Get the secure-connect zip file for Astra DB to your local machine 
@@ -22,6 +23,16 @@ This repository serves the different REST endpoints to provide different IPL rel
    java -jar .\ipl-data-provider.jar --datastax.astra.secure-connection-bundle=C:\MyWork\resources\secure-connect.zip
 
    ```  
+
+### Docker Deployment ###
+1. Navigate inside the docker-compose directory.
+2. Update `DATASTAX_ASTRA_SECURE_CONNECTION_BUNDLE` value in .env file.
+3. Run the below command
+   ```
+   docker-compose up -d
+   ```
+
+### Helm chart for Kubernetes Deployment ###
    
 ### API Documentation ###
 Once application is started, the documentation about the different REST endpoints can be found using the below link
@@ -31,4 +42,3 @@ http://localhost:8082/ipl/swagger-ui/index.html
 
 ![img.png](Documentation.png)
 
-###### Web UI code will be present in different git repository. ######

@@ -8,6 +8,7 @@ export class Match {
               public tossWinner: string,
               public tossDecision: string,
               public winner: string,
+              public playerOfMatch: string,
               public result: string,
               public umpire1: string,
               public umpire2: string) {

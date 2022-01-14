@@ -15,7 +15,7 @@ export class TeamdetailsEffects {
     ofType(MatchAction.FETCH_MATCHES),
     switchMap((data: MatchAction.FetchMatches) => {
       return this.http.get<HttpResponse<any>>(
-        `${environment.baseUrl}/teams/` + data.payload.team + "/years/" + data.payload.year
+        `${environment.baseUrl}/teams/` + data.payload.team + "/years/" + data.payload.year + "/matches"
       )
         .pipe(
           map((response: HttpResponse<any>) => {

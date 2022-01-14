@@ -18,6 +18,7 @@ public class ModelRepresentationConverter extends ModelConverter {
                 .tossDecision(source.getTossDecision())
                 .tossWinner(source.getTossWinner())
                 .result(source.getResult())
+                .playerOfMatch(source.getPlayerOfMatch())
                 .venue(source.getVenue())
                 .umpire1(source.getUmpire1())
                 .umpire2(source.getUmpire2())

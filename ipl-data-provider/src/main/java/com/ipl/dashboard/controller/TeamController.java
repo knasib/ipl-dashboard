@@ -51,7 +51,7 @@ public class TeamController {
             @ApiResponse(responseCode = "400", description = "Not found."),
             @ApiResponse(responseCode = "500", description = "Internal server error.")
     })
-    @GetMapping(value = "{teamname}/years/{year}")
+    @GetMapping(value = "{teamname}/years/{year}/matches")
     public @ResponseBody
     ResponseEntity<MatchRepresentationModels> getMatches(@PathVariable @NotEmpty String teamname,
                                                          @PathVariable @NotEmpty Integer year) {

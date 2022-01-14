@@ -110,6 +110,7 @@ public class IplDataLoaderService implements CommandLineRunner {
                 .tossDecision(inputMatch[InputFileFieldName.toss_decision.ordinal()])
                 .tossWinner(inputMatch[InputFileFieldName.toss_winner.ordinal()])
                 .result(getResult(inputMatch))
+                .playerOfMatch(inputMatch[InputFileFieldName.player_of_match.ordinal()])
                 .venue(inputMatch[InputFileFieldName.venue.ordinal()])
                 .umpire1(inputMatch[InputFileFieldName.umpire1.ordinal()])
                 .umpire2(inputMatch[InputFileFieldName.umpire2.ordinal()])

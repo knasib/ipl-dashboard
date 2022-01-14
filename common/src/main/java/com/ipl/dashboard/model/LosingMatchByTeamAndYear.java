@@ -57,6 +57,10 @@ public class LosingMatchByTeamAndYear {
     @CassandraType(type = CassandraType.Name.TEXT)
     private String result;
 
+    @Column("player_of_match")
+    @CassandraType(type = CassandraType.Name.TEXT)
+    private String playerOfMatch;
+
     @Column("umpire_1")
     @CassandraType(type = CassandraType.Name.TEXT)
     private String umpire1;

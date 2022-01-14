@@ -21,6 +21,7 @@ public class MatchRepresentationModel extends RepresentationModel<MatchRepresent
     private String tossDecision;
     private String winner;
     private String result;
+    private String playerOfMatch;
     private String umpire1;
     private String umpire2;
 }
