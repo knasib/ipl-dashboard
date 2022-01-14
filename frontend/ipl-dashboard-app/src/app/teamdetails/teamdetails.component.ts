@@ -18,7 +18,7 @@ import {FetchMatches} from "./store/teamdetails.actions";
 export class TeamdetailsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   teamName: string;
-  year: number = 2010;
+  year: number = environment.endYear;
   matches: Match[];
   startYear: number = environment.startYear;
   endYear: number = environment.endYear;
@@ -30,13 +30,11 @@ export class TeamdetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    for (var i = this.startYear; i <= this.endYear; i++) {
-      this.years.push(i);
-    }
+    this.fillYears();
 
     this.route.params.subscribe((params: Params) => {
       this.teamName = params['teamname'];
-      this.year = +params['year']
+      //this.year = +params['year']
     });
 
    this.store.dispatch(new matchActions.FetchMatches({team: this.teamName, year: this.year}));
@@ -47,7 +45,14 @@ export class TeamdetailsComponent implements OnInit, OnDestroy {
 
   }
 
+  private fillYears() {
+    for (var i = this.endYear; i >= this.startYear; i--) {
+      this.years.push(i);
+    }
+  }
+
   getMatches(selectedYear) {
+    this.year = selectedYear;
     this.store.dispatch(new FetchMatches({year: selectedYear, team: this.teamName}))
   }
 

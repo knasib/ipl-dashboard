@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
@@ -59,6 +60,8 @@ public class TeamServiceImpl implements TeamService {
                 .stream().map(ModelConverter::convertToMatch).toList());
         matches.addAll(losingMatchByTeamAndYearRepository.findAllByTeam2AndYear(team, year)
                 .stream().map(ModelConverter::convertToMatch).toList());
+
+        matches.sort((o1, o2) -> o2.getId().compareTo(o1.getId()));
 
         return MatchRepresentationModels.builder()
                 .matchRepresentationModels(matchRepresentationModelAssembler.toModels(matches))

@@ -6,6 +6,7 @@
 
   .year-box {
     align-items: stretch;
+    margin-top: 100px;
   }
   .item-box {
     margin-top: 10px;
@@ -21,6 +22,19 @@
     background-color: darkgray;
     cursor: pointer;
     border-radius: 5px;
+  }
+
+  .year-selected {
+    background-color: yellowgreen;
+  }
+
+  .win {
+    background-color: yellowgreen;
+  }
+
+  .loss {
+    color: aliceblue;
+    background-color: orangered;
   }
 
   h3 {

@@ -23,7 +23,7 @@ export class TeamtileComponent implements OnInit, AfterViewInit {
 
   navigateTeamPage() {
     console.log("Navigate To Team Page " + this.team.name)
-    let url = "/teams/" + this.team.name + "/years/2020";
+    let url = "/teams/" + this.team.name;
     this.router.navigate([url], { relativeTo: this.route })
   }
 }

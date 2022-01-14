@@ -1,19 +1,20 @@
 <div class="grid-container">
-
   <div class="col-lg-2 year-box">
     <div class="home" (click)="navigateHome()">Home</div>
     <div *ngFor="let y of years">
-      <div class="year" (click)="getMatches(y)">{{y}}</div>
+      <div class="year" [ngClass]="{'year-selected' : year == y}" (click)="getMatches(y)">{{y}}</div>
     </div>
   </div>
   <div>
+
+    <h3>{{teamName}}</h3>
     <div class="col-lg-9" *ngIf="matches.length == 0">
       <h3>No Match to display</h3>
     </div>
     <div class="col-lg-9" *ngFor="let match of matches">
       <div class="row">
-        <div class="list-group-item item-box">
-          <div>{{match.team1}} vs {{match.team2}}</div>
+        <div class="list-group-item item-box"  [ngClass]="match.winner == teamName ? 'win' : 'loss'">
+          <div>vs <strong style="font-size: 20px">{{match.team2}}</strong></div>
           <div>{{match.date}}</div>
           <div>{{match.venue}}</div>
           Toss Details
@@ -23,7 +24,6 @@
           <div>{{match.umpire2}}</div>
           Result
           <div>{{match.result}}</div>
-
         </div>
       </div>
     </div>
