@@ -35,3 +35,4 @@ build/
 ### ipl-dashboard ###
 **/src/main/resources/secure-connect.zip
 **/logs/**
+**/static/**
