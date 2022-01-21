@@ -1,8 +1,11 @@
-<div class="col-lg-12 col-sm-12 col-xs-8 list-group-item team-box" (click)="navigateTeamPage()">
-  <div class="row team-name">
-    <h3><b>{{team.name}}</b></h3>
-  </div>
-  <div class="row win-per" style="text-align: center">
-    <h4>Win Percentage : {{team.totalWins}} / {{team.totalMatches}}</h4>
+<div class="card team-container">
+  <div class="team-box" (click)="navigateTeamPage()">
+    <div class="card-header team-name">
+      <h3><b>{{team.name}}</b></h3>
+    </div>
+    <div class="card-text progress bar mt-5">
+      <div class="progress-bar bg-success" style="width: {{team.totalWins/team.totalMatches*100}}%">{{team.totalWins}}</div>
+      <div class="progress-bar bg-danger" style="width: {{(team.totalMatches-team.totalWins)/team.totalMatches*100}}%">{{(team.totalMatches-team.totalWins)}}</div>
+    </div>
   </div>
 </div>

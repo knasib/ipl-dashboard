@@ -31,7 +31,7 @@ public class TeamRepresentationModelAssembler
                 linkTo(methodOn(TeamController.class).getTeams()).withRel(Constants.TEAMS)
         );
         teamRepresentationModel.add(
-                linkTo(TeamController.class).slash(team.getName()).slash(Constants.YEARS).slash(Constants.CURRENT_YEAR).withRel(Constants.MATCHES)
+                linkTo(TeamController.class).slash(team.getName()).slash(Constants.YEARS).slash(Constants.CURRENT_YEAR).slash(Constants.MATCHES).withRel(Constants.MATCHES)
         );
         return teamRepresentationModel;
     }

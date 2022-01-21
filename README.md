@@ -10,7 +10,23 @@ This repository serves the different REST endpoints to provide different IPL rel
 4. Swagger for Documentation
 5. Angular, Html, css for UI
 
-### How to run ###
+### How to build ###
+1. Navigate to the root of the project.
+2. Execute below command
+
+   ```
+   ./build-script.sh <DOCKER_HUB_USERNAME> <DOCKER_HUB_PASSWORD>
+   ```
+
+### Docker Deployment (using Docker image)###
+1. Navigate inside the docker-compose directory.
+2. Update `DATASTAX_ASTRA_SECURE_CONNECTION_BUNDLE` value in .env file.
+3. Run the below command
+   ```
+   docker-compose up -d
+   ```
+
+### How to run (using jar)###
 1. Get the secure-connect zip file for Astra DB to your local machine 
 2. Run the below command
 
@@ -23,14 +39,6 @@ This repository serves the different REST endpoints to provide different IPL rel
    java -jar .\ipl-data-provider.jar --datastax.astra.secure-connection-bundle=C:\MyWork\resources\secure-connect.zip
 
    ```  
-
-### Docker Deployment ###
-1. Navigate inside the docker-compose directory.
-2. Update `DATASTAX_ASTRA_SECURE_CONNECTION_BUNDLE` value in .env file.
-3. Run the below command
-   ```
-   docker-compose up -d
-   ```
 
 ### Helm chart for Kubernetes Deployment ###
    

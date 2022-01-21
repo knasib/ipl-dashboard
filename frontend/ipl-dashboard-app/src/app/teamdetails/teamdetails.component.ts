@@ -34,7 +34,6 @@ export class TeamdetailsComponent implements OnInit, OnDestroy {
 
     this.route.params.subscribe((params: Params) => {
       this.teamName = params['teamname'];
-      //this.year = +params['year']
     });
 
    this.store.dispatch(new matchActions.FetchMatches({team: this.teamName, year: this.year}));
@@ -42,11 +41,11 @@ export class TeamdetailsComponent implements OnInit, OnDestroy {
     this.subscription = this.store.select("matches").subscribe((matchState) => {
       this.matches = matchState.matches;
     });
-
+    
   }
 
   private fillYears() {
-    for (var i = this.endYear; i >= this.startYear; i--) {
+    for (let i = this.endYear; i >= this.startYear; i--) {
       this.years.push(i);
     }
   }
@@ -57,7 +56,16 @@ export class TeamdetailsComponent implements OnInit, OnDestroy {
   }
 
   navigateHome() {
-    this.router.navigate(["/home"])
+    this.router.navigate(["/home"]).then(_ => {});
+  }
+
+  navigateTeamPage(match: Match) {
+    let team = match.team1 == this.teamName ? match.team2 : match.team1;
+
+    console.log("Navigate To Team Page " + team)
+    let url = "/teams/" + team;
+    console.log("URL" + url);
+    this.router.navigate([url]).then(_ => {})
   }
 
   ngOnDestroy(): void {

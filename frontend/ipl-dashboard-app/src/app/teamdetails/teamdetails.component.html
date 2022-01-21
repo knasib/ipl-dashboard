@@ -13,7 +13,7 @@
     <div class="col-lg-9" *ngFor="let match of matches">
       <div class="row">
         <div class="list-group-item item-box"  [ngClass]="match.winner == teamName ? 'win' : 'loss'">
-          <div class="team2">vs {{match.team1 == teamName ? match.team2.toUpperCase() : match.team1.toUpperCase()}}</div>
+          <div class="team2" (click)="navigateTeamPage(match)">vs {{match.team1 == teamName ? match.team2.toUpperCase() : match.team1.toUpperCase()}}</div>
           <div>{{match.date}}</div>
           <div>{{match.venue}}</div>
           <div class="match-details">
