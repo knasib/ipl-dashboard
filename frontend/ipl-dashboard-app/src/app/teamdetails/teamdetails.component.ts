@@ -34,6 +34,7 @@ export class TeamdetailsComponent implements OnInit, OnDestroy {
 
     this.route.params.subscribe((params: Params) => {
       this.teamName = params['teamname'];
+      this.year = +params['year'];
     });
 
    this.store.dispatch(new matchActions.FetchMatches({team: this.teamName, year: this.year}));
@@ -41,7 +42,7 @@ export class TeamdetailsComponent implements OnInit, OnDestroy {
     this.subscription = this.store.select("matches").subscribe((matchState) => {
       this.matches = matchState.matches;
     });
-    
+
   }
 
   private fillYears() {
@@ -53,6 +54,8 @@ export class TeamdetailsComponent implements OnInit, OnDestroy {
   getMatches(selectedYear) {
     this.year = selectedYear;
     this.store.dispatch(new FetchMatches({year: selectedYear, team: this.teamName}))
+    let url = "/teams/" + this.teamName + "/" + this.year;
+    this.router.navigate([url]).then(_ => {})
   }
 
   navigateHome() {
@@ -61,10 +64,7 @@ export class TeamdetailsComponent implements OnInit, OnDestroy {
 
   navigateTeamPage(match: Match) {
     let team = match.team1 == this.teamName ? match.team2 : match.team1;
-
-    console.log("Navigate To Team Page " + team)
-    let url = "/teams/" + team;
-    console.log("URL" + url);
+    let url = "/teams/" + team + "/" + this.year;
     this.router.navigate([url]).then(_ => {})
   }
 

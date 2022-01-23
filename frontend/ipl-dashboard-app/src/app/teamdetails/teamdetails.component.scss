@@ -39,12 +39,12 @@
   }
 
   .win {
-    background-color: yellowgreen;
+    background-color: #3E7550;
   }
 
   .loss {
-    color: aliceblue;
-    background-color: orangered;
+    //color: aliceblue;
+    background-color: #8a105d;
   }
 
   .match-details {
@@ -76,5 +76,6 @@
     font-size: 20px;
     margin-bottom: 10px;
     cursor: pointer;
+    color: #2596be;
   }
 }

@@ -7,7 +7,7 @@ import {MatchdetailsComponent} from "./matchdetails/matchdetails.component";
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'teams/:teamname', component: TeamdetailsComponent},
+  {path: 'teams/:teamname/:year', component: TeamdetailsComponent},
   {path: 'matchdetails/:matchid', component: MatchdetailsComponent},
 ];
 

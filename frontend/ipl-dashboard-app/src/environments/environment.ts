@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8082/ipl',
+  baseUrl: 'http://localhost:8082',
   startYear: 2010,
   endYear: 2020
 };
